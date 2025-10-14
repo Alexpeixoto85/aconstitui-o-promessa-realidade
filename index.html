@@ -149,6 +149,7 @@
             align-items: center;
             margin: 20px 0;
             gap: 15px;
+            transition: opacity 0.3s;
         }
         
         .flipbook-btn {
@@ -223,6 +224,7 @@
         .page-content {
             height: 100%;
             overflow-y: auto;
+            transition: font-size 0.3s ease; /* Transição suave para o tamanho da fonte */
         }
         
         .page-number {
@@ -302,6 +304,29 @@
             gap: 15px;
             align-items: center;
         }
+
+        .font-controls {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .font-btn {
+            background-color: #555;
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .font-btn:hover {
+            background-color: #777;
+        }
         
         .exit-fullscreen-btn {
             position: fixed;
@@ -361,8 +386,9 @@
             .fullscreen-controls {
                 bottom: 10px;
                 padding: 8px 15px;
-                width: 90%;
-                justify-content: space-between;
+                width: 95%;
+                justify-content: center;
+                gap: 10px;
             }
             
             .exit-fullscreen-btn {
@@ -390,7 +416,7 @@
             <p class="author">Est. de Direito Alex Peixoto</p>
         </header>
 
-        <div class="flipbook-controls">
+        <div class="flipbook-controls" id="main-controls">
             <button class="flipbook-btn" id="prev-btn">Página Anterior</button>
             <span class="page-indicator" id="page-indicator">Página 1 de 16</span>
             <button class="flipbook-btn" id="next-btn">Próxima Página</button>
@@ -398,7 +424,6 @@
         </div>
 
         <div class="flipbook" id="flipbook">
-            <!-- Página 1 -->
             <div class="page active" id="page-1">
                 <div class="page-content">
                     <h2>Sumário</h2>
@@ -445,7 +470,6 @@
                 <div class="page-number">1</div>
             </div>
 
-            <!-- Página 2 -->
             <div class="page" id="page-2">
                 <div class="page-content">
                     <section id="prefacio" class="chapter">
@@ -458,7 +482,6 @@
                 <div class="page-number">2</div>
             </div>
 
-            <!-- Página 3 -->
             <div class="page" id="page-3">
                 <div class="page-content">
                     <section id="introducao" class="chapter">
@@ -473,7 +496,6 @@
                 <div class="page-number">3</div>
             </div>
 
-            <!-- Página 4 -->
             <div class="page" id="page-4">
                 <div class="page-content">
                     <section id="parte1">
@@ -483,7 +505,7 @@
                             <h3>Capítulo 1: O Parto da Democracia: O Processo Constituinte de 1987-88</h3>
                             <p>A CF/88 não pode ser compreendida sem se olhar para o seu momento de gestação. Ela foi o parto, por vezes traumático, da redemocratização. Após 21 anos de regime militar, a sociedade brasileira respirava os ares da <em>abertura lenta, gradual e segura</em>, mas ansiava por uma ruptura democrática definitiva. A Assembleia Nacional Constituinte (ANC), instalada em 1987, tornou-se a arena onde esse ansioso espírito nacional se materializou.</p>
                             <p>A ANC era um microcosmo do Brasil. Nela estavam representados desde setores remanescentes do antigo regime até vozes progressistas e movimentos sociais há muito silenciados. Foi um processo singularmente aberto, com audições públicas e uma histórica participação popular, sintetizada no slogan "O Povo no Poder". Grupos de pressão de toda natureza – sindicatos, centrais sindicais, confederações empresariais, entidades pastorais, movimentos por moradia e por direitos humanos – atuaram intensamente, tornando o processo constituinte um verdadeiro caldeirão de interesses.</p>
-                            <p>Essa efervescência explica tanto a grandeza quanto uma das principais críticas que se faz à Carta: seu carácter <span class="highlight">analítico e detalhista</span>. Em seu afã de atender a demandas históricas reprimidas e de evitar brechas para o arbítrio, o constituinte "originário" acabou por incorporar ao texto uma série de matérias que, em outras tradições, estariam reservadas à lei ordinária. Criou-se, assim, a chamada <span class="highlight">"Constituição Fornalha"</span> ou "Dirigente".</p>
+                            <p>Essa efersvencência explica tanto a grandeza quanto uma das principais críticas que se faz à Carta: seu carácter <span class="highlight">analítico e detalhista</span>. Em seu afã de atender a demandas históricas reprimidas e de evitar brechas para o arbítrio, o constituinte "originário" acabou por incorporar ao texto uma série de matérias que, em outras tradições, estariam reservadas à lei ordinária. Criou-se, assim, a chamada <span class="highlight">"Constituição Fornalha"</span> ou "Dirigente".</p>
                             
                             <div class="critique">
                                 <h4>Crítica:</h4>
@@ -500,7 +522,6 @@
                 <div class="page-number">4</div>
             </div>
 
-            <!-- Página 5 -->
             <div class="page" id="page-5">
                 <div class="page-content">
                     <div id="capitulo2" class="chapter">
@@ -521,7 +542,6 @@
                 <div class="page-number">5</div>
             </div>
 
-            <!-- Página 6 -->
             <div class="page" id="page-6">
                 <div class="page-content">
                     <div id="capitulo3" class="chapter">
@@ -538,7 +558,6 @@
                 <div class="page-number">6</div>
             </div>
 
-            <!-- Página 7 -->
             <div class="page" id="page-7">
                 <div class="page-content">
                     <section id="parte2">
@@ -573,7 +592,6 @@
                 <div class="page-number">7</div>
             </div>
 
-            <!-- Página 8 -->
             <div class="page" id="page-8">
                 <div class="page-content">
                     <div id="capitulo5" class="chapter">
@@ -606,7 +624,6 @@
                 <div class="page-number">8</div>
             </div>
 
-            <!-- Página 9 -->
             <div class="page" id="page-9">
                 <div class="page-content">
                     <div id="capitulo6" class="chapter">
@@ -652,7 +669,6 @@
                 <div class="page-number">9</div>
             </div>
 
-            <!-- Página 10 -->
             <div class="page" id="page-10">
                 <div class="page-content">
                     <section id="parte3">
@@ -688,7 +704,6 @@
                 <div class="page-number">10</div>
             </div>
 
-            <!-- Página 11 -->
             <div class="page" id="page-11">
                 <div class="page-content">
                     <div id="capitulo8" class="chapter">
@@ -720,7 +735,6 @@
                 <div class="page-number">11</div>
             </div>
 
-            <!-- Página 12 -->
             <div class="page" id="page-12">
                 <div class="page-content">
                     <div id="capitulo9" class="chapter">
@@ -755,7 +769,6 @@
                 <div class="page-number">12</div>
             </div>
 
-            <!-- Página 13 -->
             <div class="page" id="page-13">
                 <div class="page-content">
                     <section id="parte4">
@@ -797,7 +810,6 @@
                 <div class="page-number">13</div>
             </div>
 
-            <!-- Página 14 -->
             <div class="page" id="page-14">
                 <div class="page-content">
                     <div id="capitulo11" class="chapter">
@@ -827,7 +839,6 @@
                 <div class="page-number">14</div>
             </div>
 
-            <!-- Página 15 -->
             <div class="page" id="page-15">
                 <div class="page-content">
                     <section id="posfacio" class="chapter">
@@ -841,7 +852,6 @@
                 <div class="page-number">15</div>
             </div>
 
-            <!-- Página 16 -->
             <div class="page" id="page-16">
                 <div class="page-content">
                     <section id="bibliografia" class="chapter">
@@ -891,11 +901,13 @@
         </footer>
     </div>
 
-    <!-- Controles para modo tela cheia (inicialmente ocultos) -->
     <div class="fullscreen-controls" id="fullscreen-controls" style="display: none;">
-        <button class="flipbook-btn" id="fullscreen-prev-btn">Página Anterior</button>
-        <span class="page-indicator" id="fullscreen-page-indicator">Página 1 de 16</span>
-        <button class="flipbook-btn" id="fullscreen-next-btn">Próxima Página</button>
+        <span class="page-indicator" id="fullscreen-page-indicator" style="color: white;">Página 1 de 16</span>
+        <div class="font-controls">
+            <button class="font-btn" id="font-decrease-btn" title="Diminuir Fonte">A-</button>
+            <button class="font-btn" id="font-reset-btn" title="Resetar Fonte">A</button>
+            <button class="font-btn" id="font-increase-btn" title="Aumentar Fonte">A+</button>
+        </div>
     </div>
     
     <button class="exit-fullscreen-btn" id="exit-fullscreen-btn" style="display: none;">Sair da Tela Cheia</button>
@@ -908,47 +920,61 @@
         let startX = 0;
         let endX = 0;
         const swipeThreshold = 50; // Distância mínima para considerar um swipe
+        let currentFontSize = 1; // Unidade em 'rem' para escalabilidade
+        const initialFontSize = 1.1; // Valor inicial em rem para o modo tela cheia
+        const maxFontSize = 2.0;
+        const minFontSize = 0.8;
+        const fontSizeStep = 0.1;
 
         // Elementos DOM
         const flipbook = document.getElementById('flipbook');
+        const mainControls = document.getElementById('main-controls');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const pageIndicator = document.getElementById('page-indicator');
         const fullscreenBtn = document.getElementById('fullscreen-btn');
         const fullscreenControls = document.getElementById('fullscreen-controls');
         const exitFullscreenBtn = document.getElementById('exit-fullscreen-btn');
-        const fullscreenPrevBtn = document.getElementById('fullscreen-prev-btn');
-        const fullscreenNextBtn = document.getElementById('fullscreen-next-btn');
         const fullscreenPageIndicator = document.getElementById('fullscreen-page-indicator');
+        
+        // Novos elementos para controle de fonte
+        const fontIncreaseBtn = document.getElementById('font-increase-btn');
+        const fontDecreaseBtn = document.getElementById('font-decrease-btn');
+        const fontResetBtn = document.getElementById('font-reset-btn');
+        const pageContents = document.querySelectorAll('.page-content');
 
         // Função para navegar para uma página específica
         function goToPage(pageNumber) {
             if (pageNumber < 1 || pageNumber > totalPages) return;
             
-            // Remove a classe 'active' da página atual
-            document.getElementById(`page-${currentPage}`).classList.remove('active');
+            const currentPageElement = document.getElementById(`page-${currentPage}`);
+            if (currentPageElement) {
+                currentPageElement.classList.remove('active');
+            }
             
-            // Atualiza a página atual
             currentPage = pageNumber;
             
-            // Adiciona a classe 'active' à nova página
-            document.getElementById(`page-${currentPage}`).classList.add('active');
+            const newPageElement = document.getElementById(`page-${currentPage}`);
+            if (newPageElement) {
+                newPageElement.classList.add('active');
+            }
             
-            // Atualiza os indicadores de página
             updatePageIndicators();
-            
-            // Atualiza o estado dos botões
             updateButtonStates();
         }
 
         // Função para ir para a página anterior
         function goToPrevPage() {
-            goToPage(currentPage - 1);
+            if(currentPage > 1) {
+                goToPage(currentPage - 1);
+            }
         }
 
         // Função para ir para a próxima página
         function goToNextPage() {
-            goToPage(currentPage + 1);
+            if(currentPage < totalPages) {
+                goToPage(currentPage + 1);
+            }
         }
 
         // Função para atualizar os indicadores de página
@@ -961,8 +987,23 @@
         function updateButtonStates() {
             prevBtn.disabled = currentPage === 1;
             nextBtn.disabled = currentPage === totalPages;
-            fullscreenPrevBtn.disabled = currentPage === 1;
-            fullscreenNextBtn.disabled = currentPage === totalPages;
+        }
+
+        // Função para alterar o tamanho da fonte
+        function changeFontSize(direction) {
+            let newSize;
+            if (direction === 'increase') {
+                newSize = Math.min(maxFontSize, currentFontSize + fontSizeStep);
+            } else if (direction === 'decrease') {
+                newSize = Math.max(minFontSize, currentFontSize - fontSizeStep);
+            } else { // reset
+                newSize = initialFontSize;
+            }
+            
+            currentFontSize = newSize;
+            pageContents.forEach(content => {
+                content.style.fontSize = `${currentFontSize}rem`;
+            });
         }
 
         // Função para alternar o modo de tela cheia
@@ -970,16 +1011,29 @@
             if (!isFullscreen) {
                 // Entrar no modo tela cheia
                 flipbook.classList.add('fullscreen');
+                mainControls.style.display = 'none'; // Oculta os controles principais
                 fullscreenControls.style.display = 'flex';
                 exitFullscreenBtn.style.display = 'block';
                 document.body.style.overflow = 'hidden'; // Impede rolagem do corpo
+                
+                // Define o tamanho inicial da fonte para o modo tela cheia
+                currentFontSize = initialFontSize;
+                changeFontSize('reset');
+                
                 isFullscreen = true;
             } else {
                 // Sair do modo tela cheia
                 flipbook.classList.remove('fullscreen');
+                mainControls.style.display = 'flex'; // Mostra os controles principais
                 fullscreenControls.style.display = 'none';
                 exitFullscreenBtn.style.display = 'none';
                 document.body.style.overflow = ''; // Restaura rolagem do corpo
+                
+                // Reseta o estilo da fonte
+                pageContents.forEach(content => {
+                    content.style.fontSize = '';
+                });
+
                 isFullscreen = false;
             }
         }
@@ -999,18 +1053,14 @@
             
             const diffX = startX - endX;
             
-            // Verifica se o movimento foi significativo o suficiente
             if (Math.abs(diffX) > swipeThreshold) {
                 if (diffX > 0) {
-                    // Swipe para a esquerda - próxima página
                     goToNextPage();
                 } else {
-                    // Swipe para a direita - página anterior
                     goToPrevPage();
                 }
             }
             
-            // Reseta as variáveis
             startX = 0;
             endX = 0;
         }
@@ -1018,10 +1068,13 @@
         // Event Listeners
         prevBtn.addEventListener('click', goToPrevPage);
         nextBtn.addEventListener('click', goToNextPage);
-        fullscreenPrevBtn.addEventListener('click', goToPrevPage);
-        fullscreenNextBtn.addEventListener('click', goToNextPage);
         fullscreenBtn.addEventListener('click', toggleFullscreen);
         exitFullscreenBtn.addEventListener('click', toggleFullscreen);
+
+        // Event Listeners para controle de fonte
+        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
+        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
+        fontResetBtn.addEventListener('click', () => changeFontSize('reset'));
 
         // Event Listeners para gestos de toque
         flipbook.addEventListener('touchstart', handleTouchStart, false);
