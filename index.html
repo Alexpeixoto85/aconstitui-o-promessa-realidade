@@ -4,128 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Constituição Cidadã Trinta e Cinco Anos Depois | Est. de Direito Alex Peixoto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Georgia&display=swap" rel="stylesheet">
     <style>
         /* Estilos gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
         
         body {
-            font-family: 'Times New Roman', serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #3d3d3d;
+            background-color: #f1f1f1;
+            background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
         }
         
-        /* Container principal do flipbook */
-        .flipbook-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
         }
-        
-        /* Cabeçalho e títulos */
+
+        /* Estilos para o cabeçalho */
         header {
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #8B0000;
-            padding-bottom: 15px;
+            padding: 40px 20px;
+            border-bottom: 3px double #c9b074;
         }
         
-        h1 {
-            font-size: 2.2rem;
+        header h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
             margin-bottom: 10px;
-            color: #8B0000;
+            color: #4a2c2a;
+            font-weight: 700;
         }
         
-        h2 {
-            font-size: 1.8rem;
-            margin: 25px 0 15px;
-            color: #8B0000;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 5px;
+        header h2 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            margin-bottom: 20px;
+            color: #6a4a49;
         }
         
-        h3 {
-            font-size: 1.4rem;
-            margin: 20px 0 10px;
-            color: #8B0000;
-        }
-        
-        h4 {
+        header .author {
             font-size: 1.2rem;
-            margin: 15px 0 8px;
-            color: #555;
+            font-style: italic;
         }
         
-        /* Parágrafos e texto */
+        /* Estilos para capítulos */
+        .chapter {
+            padding: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .chapter:last-of-type {
+            border-bottom: none;
+        }
+        
+        .chapter h2 {
+            font-family: 'Cinzel', serif;
+            color: #4a2c2a;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #c9b074;
+            text-align: left;
+            font-size: 2.2rem;
+        }
+        
+        .chapter h3 {
+            color: #6a4a49;
+            margin: 30px 0 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+        }
+        
+        .chapter h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            margin: 15px 0 8px;
+            color: #4a2c2a;
+        }
+        
         p {
             margin-bottom: 15px;
             text-align: justify;
         }
-        
-        .author {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-top: 10px;
+
+        /* Imagens */
+        .cover-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 150px;
+            opacity: 0.6;
+        }
+
+        .chapter-image {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 2px solid #c9b074;
         }
         
-        .chapter {
-            margin-bottom: 30px;
-            page-break-inside: avoid;
-        }
-        
-        /* Citações e destaques */
-        blockquote {
-            border-left: 4px solid #8B0000;
-            padding-left: 15px;
-            margin: 15px 0;
-            font-style: italic;
-            color: #555;
-        }
-        
+        /* Destaques, críticas e defesas */
         .highlight {
-            background-color: #fffacd;
+            background-color: #fdfaf2;
             padding: 2px 5px;
             border-radius: 3px;
+            border: 1px solid #c9b074;
+        }
+
+        .critique, .defense {
+            border: 1px solid #c9b074;
+            background-color: #fdfaf2;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
         }
         
-        .critique {
-            background-color: #ffe6e6;
-            padding: 12px;
-            border-left: 4px solid #cc0000;
-            margin: 12px 0;
+        .critique::before, .defense::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: -1px;
+            bottom: -1px;
+            width: 10px;
+            background-color: #c9b074;
         }
         
-        .defense {
-            background-color: #e6ffe6;
-            padding: 12px;
-            border-left: 4px solid #006600;
-            margin: 12px 0;
+        /* Citações */
+        blockquote {
+            font-style: italic;
+            border-left: 4px solid #c9b074;
+            padding: 10px 20px;
+            margin: 25px 0;
+            color: #555;
+            background: #fdfdfd;
+        }
+        
+        /* Listas */
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
         }
         
         /* Sumário */
         .toc {
             margin: 25px 0;
-            padding: 15px;
-            background-color: #f0f0f0;
+            padding: 20px;
+            background-color: #fdfaf2;
+            border: 1px solid #c9b074;
             border-radius: 5px;
         }
         
         .toc ul {
             list-style-type: none;
+            padding-left: 0;
         }
         
         .toc li {
@@ -134,967 +185,196 @@
         
         .toc a {
             text-decoration: none;
-            color: #333;
+            color: #4a2c2a;
+            font-family: 'Georgia', serif;
         }
         
         .toc a:hover {
             text-decoration: underline;
-            color: #8B0000;
-        }
-        
-        /* Controles do flipbook */
-        .flipbook-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            gap: 15px;
-            transition: opacity 0.3s;
-        }
-        
-        .flipbook-btn {
-            background-color: #8B0000;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-        }
-        
-        .flipbook-btn:hover {
-            background-color: #700000;
-        }
-        
-        .flipbook-btn:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
-        
-        .page-indicator {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: #8B0000;
-        }
-        
-        .fullscreen-btn {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-        }
-        
-        .fullscreen-btn:hover {
-            background-color: #555;
-        }
-        
-        /* Páginas do flipbook */
-        .flipbook {
-            perspective: 1000px;
-            margin: 0 auto;
-            width: 100%;
-            max-width: 900px;
-            height: 600px;
-            position: relative;
-            touch-action: pan-y pinch-zoom; /* Permitir gestos de toque */
-        }
-        
-        .page {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 30px;
-            overflow-y: auto;
-            border: 1px solid #ddd;
-            transition: transform 0.6s ease-in-out;
-            transform-style: preserve-3d;
-            backface-visibility: hidden;
-            user-select: none; /* Evitar seleção de texto durante o swipe */
-        }
-        
-        .page-content {
-            height: 100%;
-            overflow-y: auto;
-            transition: font-size 0.3s ease; /* Transição suave para o tamanho da fonte */
-        }
-        
-        .page-number {
-            position: absolute;
-            bottom: 10px;
-            right: 15px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        /* Estados das páginas */
-        .page.active {
-            z-index: 2;
-        }
-        
-        .page.prev {
-            transform: rotateY(-180deg);
-            z-index: 1;
-        }
-        
-        .page.next {
-            z-index: 1;
         }
         
         /* Rodapé */
         footer {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #ddd;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        /* Modo Tela Cheia - Apenas para o flipbook */
-        .flipbook.fullscreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            max-width: 100%;
-            z-index: 1000;
-            background-color: #2c2c2c;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .flipbook.fullscreen .page {
-            max-width: 90%;
-            max-height: 90%;
-            box-shadow: 0 0 30px rgba(0,0,0,0.5);
-        }
-        
-        .flipbook.fullscreen .page-content {
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        .flipbook.fullscreen .page-number {
-            font-size: 1rem;
-            color: #888;
-        }
-        
-        .fullscreen-controls {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0,0,0,0.7);
-            padding: 10px 20px;
-            border-radius: 30px;
-            z-index: 1001;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .font-controls {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .font-btn {
-            background-color: #555;
-            color: white;
-            border: none;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .font-btn:hover {
-            background-color: #777;
-        }
-        
-        .exit-fullscreen-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-            background-color: rgba(0,0,0,0.7);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
+            padding: 30px;
+            background-color: #3d3d3d;
+            color: #c0c0c0;
         }
         
         /* Responsividade */
         @media (max-width: 768px) {
-            .flipbook {
-                height: 500px;
+            .container {
+                margin: 10px;
+                width: auto;
             }
-            
-            h1 {
-                font-size: 1.8rem;
+
+            header h1 {
+                font-size: 2rem;
             }
-            
-            h2 {
-                font-size: 1.5rem;
-            }
-            
-            .page {
-                padding: 20px;
-            }
-            
-            .flipbook.fullscreen .page {
-                max-width: 95%;
-                max-height: 95%;
-            }
-            
-            .flipbook.fullscreen .page-content {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .flipbook {
-                height: 400px;
-            }
-            
-            .flipbook-controls {
-                flex-wrap: wrap;
-            }
-            
-            .page {
-                padding: 15px;
-            }
-            
-            .fullscreen-controls {
-                bottom: 10px;
-                padding: 8px 15px;
-                width: 95%;
-                justify-content: center;
-                gap: 10px;
-            }
-            
-            .exit-fullscreen-btn {
-                top: 10px;
-                right: 10px;
-            }
-        }
-        
-        @media (max-height: 600px) {
-            .flipbook.fullscreen .page {
-                max-height: 85%;
-            }
-            
-            .flipbook.fullscreen .page-content {
-                font-size: 0.95rem;
+
+            .chapter {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="flipbook-container">
-        <header>
-            <h1>A Constituição Cidadã Trinta e Cinco Anos Depois</h1>
-            <h2>Uma Análise Material da Carta de 1988 entre a Promessa e a Realidade</h2>
-            <p class="author">Est. de Direito Alex Peixoto</p>
-        </header>
 
-        <div class="flipbook-controls" id="main-controls">
-            <button class="flipbook-btn" id="prev-btn">Página Anterior</button>
-            <span class="page-indicator" id="page-indicator">Página 1 de 16</span>
-            <button class="flipbook-btn" id="next-btn">Próxima Página</button>
-            <button class="fullscreen-btn" id="fullscreen-btn">Tela Cheia</button>
+<div class="container">
+    <header>
+        <h1>A Constituição Cidadã Trinta e Cinco Anos Depois</h1>
+        <h2>Uma Análise Material da Carta de 1988 entre a Promessa e a Realidade</h2>
+        <p class="author">Est. de Direito Alex Peixoto</p>
+    </header>
+
+    <div class="chapter" id="sumario">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Coat_of_arms_of_Brazil.svg/297px-Coat_of_arms_of_Brazil.svg.png" alt="Brasão da República do Brasil" class="cover-image">
+        <h2>Sumário</h2>
+        <div class="toc">
+            <ul>
+                <li><a href="#prefacio">Prefácio</a></li>
+                <li><a href="#introducao">Introdução: O Gigante de Papel?</a></li>
+                <li>
+                    <strong>Parte I: A Gênese e a Arquitetura</strong>
+                    <ul>
+                        <li><a href="#capitulo1">Capítulo 1: O Parto da Democracia</a></li>
+                        <li><a href="#capitulo2">Capítulo 2: A Estrutura da Carta</a></li>
+                        <li><a href="#capitulo3">Capítulo 3: A Teoria dos Princípios</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Parte II: Os Princípios Fundamentais em Análise</strong>
+                    <ul>
+                        <li><a href="#capitulo4">Capítulo 4: Os Fundamentos da República</a></li>
+                        <li><a href="#capitulo5">Capítulo 5: Os Objetivos Fundamentais</a></li>
+                        <li><a href="#capitulo6">Capítulo 6: Os Princípios das Relações Internacionais</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Parte III: A Eficácia Material</strong>
+                    <ul>
+                        <li><a href="#capitulo7">Capítulo 7: O Sistema de Direitos e Garantias</a></li>
+                        <li><a href="#capitulo8">Capítulo 8: A Organização do Estado</a></li>
+                        <li><a href="#capitulo9">Capítulo 9: A Ordem Econômica e Financeira</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Parte IV: Conclusões e Perspectivas</strong>
+                    <ul>
+                        <li><a href="#capitulo10">Capítulo 10: Balanço de 35 Anos</a></li>
+                        <li><a href="#capitulo11">Capítulo 11: Por uma Hermenêutica Constitucional Transformadora</a></li>
+                    </ul>
+                </li>
+                <li><a href="#posfacio">Posfácio: A Constituição como Projeto de Nação</a></li>
+                <li><a href="#bibliografia">Bibliografia</a></li>
+            </ul>
         </div>
-
-        <div class="flipbook" id="flipbook">
-            <div class="page active" id="page-1">
-                <div class="page-content">
-                    <h2>Sumário</h2>
-                    <div class="toc">
-                        <ul>
-                            <li><a href="#" onclick="goToPage(2)">Prefácio</a></li>
-                            <li><a href="#" onclick="goToPage(3)">Introdução: O Gigante de Papel?</a></li>
-                            <li>
-                                <strong>Parte I: A Gênese e a Arquitetura</strong>
-                                <ul>
-                                    <li><a href="#" onclick="goToPage(4)">Capítulo 1: O Parto da Democracia</a></li>
-                                    <li><a href="#" onclick="goToPage(5)">Capítulo 2: A Estrutura da Carta</a></li>
-                                    <li><a href="#" onclick="goToPage(6)">Capítulo 3: A Teoria dos Princípios</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Parte II: Os Princípios Fundamentais em Análise</strong>
-                                <ul>
-                                    <li><a href="#" onclick="goToPage(7)">Capítulo 4: Os Fundamentos da República</a></li>
-                                    <li><a href="#" onclick="goToPage(8)">Capítulo 5: Os Objetivos Fundamentais</a></li>
-                                    <li><a href="#" onclick="goToPage(9)">Capítulo 6: Os Princípios das Relações Internacionais</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Parte III: A Eficácia Material</strong>
-                                <ul>
-                                    <li><a href="#" onclick="goToPage(10)">Capítulo 7: O Sistema de Direitos e Garantias</a></li>
-                                    <li><a href="#" onclick="goToPage(11)">Capítulo 8: A Organização do Estado</a></li>
-                                    <li><a href="#" onclick="goToPage(12)">Capítulo 9: A Ordem Econômica e Financeira</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <strong>Parte IV: Conclusões e Perspectivas</strong>
-                                <ul>
-                                    <li><a href="#" onclick="goToPage(13)">Capítulo 10: Balanço de 35 Anos</a></li>
-                                    <li><a href="#" onclick="goToPage(14)">Capítulo 11: Por uma Hermenêutica Constitucional Transformadora</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#" onclick="goToPage(15)">Posfácio: A Constituição como Projeto de Nação</a></li>
-                            <li><a href="#" onclick="goToPage(16)">Bibliografia</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="page-number">1</div>
-            </div>
-
-            <div class="page" id="page-2">
-                <div class="page-content">
-                    <section id="prefacio" class="chapter">
-                        <h2>Prefácio</h2>
-                        <p>Há textos jurídicos que são meros regulamentos de poder. Há outros que se aspiram a ser a alma de uma nação. A Constituição Federal de 1988 pertence, inegavelmente, a este segundo grupo. Nascer das cinzas de um longo período autoritário, ela carregava em seu bojo não apenas a tarefa de reorganizar o Estado, mas a missão quase messiânica de refundar o pacto social brasileiro sobre novas bases: as da dignidade, da cidadania e da justiça social.</p>
-                        <p>Ao longo destas páginas, não trataremos a Carta como um documento estático, um fóssil jurídico a ser dissecado em artigos e incisos. Pretendemos analisá-la como um organismo vivo, pulsante, que respira os ares da sociedade que busca regular. Ela existe em um estado de tensão permanente: entre o texto e a realidade, a promessa e o desempenho, a normatividade e a efetividade.</p>
-                        <p>Esta obra é, portanto, um exercício de realismo constitucional. Defenderemos com vigor o núcleo intangível de conquistas que ela representa, mas também criticaremos, com a franqueza necessária à academia, suas disfunções, seu idealismo por vezes ingênuo e o abismo que frequentemente separa seu mundo de palavras do mundo concreto da vida dos cidadãos. Adentremos, pois, na análise deste "gigante" que, passadas mais de três décadas, ainda luta para encontrar seu pleno lugar na materialidade da experiência brasileira.</p>
-                    </section>
-                </div>
-                <div class="page-number">2</div>
-            </div>
-
-            <div class="page" id="page-3">
-                <div class="page-content">
-                    <section id="introducao" class="chapter">
-                        <h2>Introdução: O Gigante de Papel?</h2>
-                        <p>A pergunta que intitula esta introdução é, deliberadamente, provocativa. "Constituição" e "Papel" são termos que, no senso comum, parecem se atrair. O risco de uma Carta Magna tornar-se letra morta, uma bela coleção de princípios desconectados da prática, é uma ameaça real em qualquer democracia jovem. O objetivo central deste livro é investigar, à luz de uma análise material, em que medida a Constituição Federal de 1988 (CF/88) conseguiu escapar a esse destino.</p>
-                        <p>A <span class="highlight">análise material</span> que propomos vai além da simples exegese do texto. Preocupa-se com o <em>direito constitucional vivo</em> – como as normas são interpretadas, aplicadas e, sobretudo, <em>sentidas</em> na vida cotidiana. Interessa-nos saber se o direito à saúde do art. 6º se materializa em um atendimento digno no SUS; se a dignidade da pessoa humana do art. 1º serve como escudo contra a humilhação nas filas ou na violência policial; se a livre iniciativa do art. 170 consegue florescer em um ambiente de burocracia e instabilidade jurídica.</p>
-                        <p>Nossa jornada se concentrará nos <span class="highlight">Princípios Fundamentais</span> (arts. 1º a 4º). Eles não são meramente a "parte introdutória" da Constituição. São sua coluna vertebral, seu <em>ethos</em> fundador. São as ideias-força que irradiam sentido para todos os outros dispositivos, dos direitos sociais à organização do Estado. Compreendê-los é ter a chave para desvendar a lógica profunda do sistema.</p>
-                        <p>O roteiro que seguiremos é dialético: iniciaremos pela gênese histórica e pela arquitetura formal da Carta (Parte I). Em seguida, dissecaremos cada um dos Princípios Fundamentais, revelando seu potencial e suas contradições (Parte II). Na sequência, desceremos ao terreno da prática, analisando como esses princípios tentam, com maior ou menor sucesso, conduzir a vida material da sociedade (Parte III). Por fim, faremos um balanço e projetaremos o futuro, argumentando por uma interpretação que realize, e não apenas repita, o texto constitucional (Parte IV).</p>
-                        <p>Esta não é uma obra neutra. É guiada pela crença de que o Direito Constitucional é, antes de tudo, um instrumento de transformação social. E a transformação exige, inevitavelmente, um olhar ao mesmo tempo amoroso e crítico sobre o nosso principal instrumento para promovê-la.</p>
-                    </section>
-                </div>
-                <div class="page-number">3</div>
-            </div>
-
-            <div class="page" id="page-4">
-                <div class="page-content">
-                    <section id="parte1">
-                        <h2>Parte I: A Gênese e a Arquitetura: Contexto Histórico e Estrutura Normativa</h2>
-                        
-                        <div id="capitulo1" class="chapter">
-                            <h3>Capítulo 1: O Parto da Democracia: O Processo Constituinte de 1987-88</h3>
-                            <p>A CF/88 não pode ser compreendida sem se olhar para o seu momento de gestação. Ela foi o parto, por vezes traumático, da redemocratização. Após 21 anos de regime militar, a sociedade brasileira respirava os ares da <em>abertura lenta, gradual e segura</em>, mas ansiava por uma ruptura democrática definitiva. A Assembleia Nacional Constituinte (ANC), instalada em 1987, tornou-se a arena onde esse ansioso espírito nacional se materializou.</p>
-                            <p>A ANC era um microcosmo do Brasil. Nela estavam representados desde setores remanescentes do antigo regime até vozes progressistas e movimentos sociais há muito silenciados. Foi um processo singularmente aberto, com audições públicas e uma histórica participação popular, sintetizada no slogan "O Povo no Poder". Grupos de pressão de toda natureza – sindicatos, centrais sindicais, confederações empresariais, entidades pastorais, movimentos por moradia e por direitos humanos – atuaram intensamente, tornando o processo constituinte um verdadeiro caldeirão de interesses.</p>
-                            <p>Essa efersvencência explica tanto a grandeza quanto uma das principais críticas que se faz à Carta: seu carácter <span class="highlight">analítico e detalhista</span>. Em seu afã de atender a demandas históricas reprimidas e de evitar brechas para o arbítrio, o constituinte "originário" acabou por incorporar ao texto uma série de matérias que, em outras tradições, estariam reservadas à lei ordinária. Criou-se, assim, a chamada <span class="highlight">"Constituição Fornalha"</span> ou "Dirigente".</p>
-                            
-                            <div class="critique">
-                                <h4>Crítica:</h4>
-                                <p>Este detalhismo excessivo engessa o ordenamento. Temas complexos e dinâmicos, como o regime jurídico dos servidores públicos ou detalhes do sistema financeiro nacional, foram constitucionalizados. Isso tem duas consequências nefastas: primeiro, dificulta tremendamente a adaptação do Estado às novas realidades, já que qualquer mudança exige o complexo e moroso processo de emenda constitucional. Segundo, judicializa questões que deveriam ser resolvidas no âmbito político-legislativo, sobrecarregando o Judiciário e tirando do debate democrático temas que são, em essência, de escolha política. A CF/88, em sua ânsia de regular tudo, criou um Estado pesado e pouco ágil.</p>
-                            </div>
-                            
-                            <div class="defense">
-                                <h4>Defesa:</h4>
-                                <p>Contudo, é preciso entender o contexto. Esse "detalhismo" foi a resposta a um período em que a lei era constantemente alterada por atos arbitrários do Executivo. O constituinte quis, justamente, "travar" certas conquistas, tornando-as cláusulas pétreas ou próximas disso, para evitar retrocessos. Foi uma opção política consciente por uma Constituição "blindada", reflexo do trauma com o autoritarismo recente.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="page-number">4</div>
-            </div>
-
-            <div class="page" id="page-5">
-                <div class="page-content">
-                    <div id="capitulo2" class="chapter">
-                        <h3>Capítulo 2: A Estrutura da Carta: Uma Análise Formal</h3>
-                        <p>A CF/88 organiza-se em uma estrutura lógica e hierárquica. Começa pelo <span class="highlight">Preâmbulo</span>, que, embora sem força normativa direta, estabelece o ton e o espírito do texto: a intenção de instituir um Estado Democrático destinado a assegurar o exercício dos direitos sociais e individuais.</p>
-                        <p>Em seguida, vem o <span class="highlight">Título I</span>, com os <span class="highlight">Princípios Fundamentais</span> (arts. 1º a 4º). Esta é a base de todo o edifício. São os alicerces que definem a natureza do Estado (República Federativa), seus fundamentos (soberania, cidadania, dignidade da pessoa humana, etc.) e seus objetivos fundamentais.</p>
-                        <p>Os <span class="highlight">Direitos e Garantias Fundamentais</span> (Título II) representam o coração da "Constituição Cidadã". É um dos catálogos mais abrangentes do mundo, dividido em direitos individuais e coletivos, direitos sociais, direitos de nacionalidade, direitos políticos e direitos relacionados à participação política.</p>
-                        <p>A <span class="highlight">Organização do Estado</span> (Título III) detalha a estrutura federativa (União, Estados, DF e Municípios), a separação de poderes (Executivo, Legislativo e Judiciário) e a organização de cada um. A <span class="highlight">Organização dos Poderes</span> (Título IV) aprofunda o funcionamento destes.</p>
-                        <p>A <span class="highlight">Defesa do Estado e das Instituições Democráticas</span> (Título V), a <span class="highlight">Tributação e Orçamento</span> (Título VI), a <span class="highlight">Ordem Econômica e Financeira</span> (Título VII) e a <span class="highlight">Ordem Social</span> (Título VIII) completam o núcleo duro da organização estatal e das políticas públicas.</p>
-                        <p>A <span class="highlight">rigidez constitucional</span> é um pilar dessa estrutura. Modificar a CF/88 exige um processo muito mais difícil do que o de uma lei comum: é preciso que uma Proposta de Emenda à Constituição (PEC) seja aprovada por três quintos dos votos de ambas as casas do Congresso Nacional, em dois turnos de votação. Isso confere estabilidade ao sistema, mas também, como criticado, pode levar a uma paralisia diante da necessidade de reformas.</p>
-                        
-                        <div class="defense">
-                            <h4>Defesa:</h4>
-                            <p>A estrutura da CF/88 é notavelmente coerente. Ela parte do macro (fundamentos e objetivos) para o micro (a organização dos poderes e a ordem social). Há uma linha lógica que conecta a dignidade da pessoa humana (Art. 1º, III) com a erradicação da pobreza (Art. 3º, III) e com a previsão de um sistema de saúde universal (Art. 196). Essa coerência interna é uma de suas maiores forças, fornecendo um norte interpretativo para os aplicadores do direito.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">5</div>
-            </div>
-
-            <div class="page" id="page-6">
-                <div class="page-content">
-                    <div id="capitulo3" class="chapter">
-                        <h3>Capítulo 3: A Teoria dos Princípios: A Coluna Vertebral do Ordenamento</h3>
-                        <p>Para entender a CF/88, é fundamental a distinção, consolidada pela teoria contemporânea do direito (notadamente Robert Alexy), entre <span class="highlight">regras</span> e <span class="highlight">princípios</span>.</p>
-                        <ul>
-                            <li><span class="highlight">Regras</span> são normas que prescrevem uma conduta específica, de aplicação direta na modalidade "tudo ou nada". Se os pressupostos são preenchidos, a regra deve ser aplicada; se não, é descartada. Ex.: "É vedado o anonimato" (Art. 5º, IV).</li>
-                            <li><span class="highlight">Princípios</span> são normas que ordenam que algo seja realizado na maior medida possível, dentro das possibilidades jurídicas e fáticas existentes. São <span class="highlight">mandados de otimização</span>. Eles não indicam uma conduta específica, mas um <em>estado de coisas</em> a ser perseguido. Ex.: "Construir uma sociedade livre, justa e solidária" (Art. 3º, I).</li>
-                        </ul>
-                        <p>Os princípios, portanto, não são meras recomendações políticas ou "programas". Têm <span class="highlight">força normativa</span>. Quando colidem – por exemplo, a livre iniciativa (Art. 1º, IV) com a proteção do meio ambiente (Art. 225) –, não se diz que um invalida o outro. Recorre-se à técnica da <span class="highlight">ponderação de interesses</span>, na qual o intérprete, diante do caso concreto, sopesa os pesos de cada princípio para encontrar a solução mais adequada, sem anular nenhum deles.</p>
-                        <p>Os Princípios Fundamentais da CF/88 são, em sua essência, princípios nesse sentido técnico. Eles são a coluna vertebral porque orientam a interpretação de todas as outras normas (regras e princípios setoriais) do ordenamento. Uma lei trabalhista, uma decisão judicial, um ato administrativo: todos devem ser lidos à luz da dignidade da pessoa humana, da cidadania, dos valores sociais do trabalho. É essa irradiação que confere unidade e sentido ao sistema constitucional como um todo.</p>
-                    </div>
-                </div>
-                <div class="page-number">6</div>
-            </div>
-
-            <div class="page" id="page-7">
-                <div class="page-content">
-                    <section id="parte2">
-                        <h2>Parte II: Os Princípios Fundamentais em Análise</h2>
-                        
-                        <div id="capitulo4" class="chapter">
-                            <h3>Capítulo 4: Os Fundamentos da República (Art. 1º)</h3>
-                            <p>O artigo 1º da CF/88 estabelece os pilares sobre os quais se ergue a República Federativa do Brasil. Estes fundamentos não são meras declarações retóricas; são valores estruturantes que devem orientar toda a interpretação e aplicação do direito no país.</p>
-                            
-                            <h4>I - A Soberania</h4>
-                            <p>A soberania como fundamento significa que o Brasil é um Estado independente no cenário internacional, não subordinado a nenhum outro poder externo. Internamente, representa a supremacia do Estado sobre quaisquer outros grupos ou organizações dentro do território nacional.</p>
-                            
-                            <h4>II - A Cidadania</h4>
-                            <p>A cidadania vai além da simples nacionalidade. Implica a participação ativa do indivíduo na vida política e social do país, com direitos e deveres. É a materialização do princípio democrático, onde o povo é o verdadeiro detentor do poder.</p>
-                            
-                            <h4>III - A Dignidade da Pessoa Humana</h4>
-                            <p>Este é, possivelmente, o mais importante de todos os fundamentos. A dignidade da pessoa humana é o valor supremo que deve orientar toda a ordem constitucional. Não se trata apenas de garantir condições materiais mínimas, mas de assegurar que cada pessoa seja tratada como fim em si mesma, e não como meio para outros objetivos.</p>
-                            
-                            <h4>IV - Os Valores Sociais do Trabalho e da Livre Iniciativa</h4>
-                            <p>Esta dupla de valores estabelece o equilíbrio entre o social e o econômico. Os valores sociais do trabalho reconhecem a importância do trabalho como fundamento da sociedade e da realização pessoal. A livre iniciativa garante a autonomia privada no campo econômico, mas sempre condicionada aos demais valores constitucionais.</p>
-                            
-                            <h4>V - O Pluralismo Político</h4>
-                            <p>O pluralismo político assegura a coexistência de diferentes ideologias, partidos e correntes de pensamento no cenário político. É a antítese do pensamento único e do autoritarismo, garantindo que a democracia seja um espaço de debate e diversidade.</p>
-                            
-                            <div class="critique">
-                                <h4>Análise Crítica:</h4>
-                                <p>Apesar da força normativa destes fundamentos, há um abismo considerável entre sua proclamação e sua efetivação. A dignidade da pessoa humana, por exemplo, é frequentemente violada em situações de extrema pobreza, no sistema prisional ou no atendimento à saúde. A cidadania plena ainda é um privilégio de poucos em um país marcado por profundas desigualdades sociais.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="page-number">7</div>
-            </div>
-
-            <div class="page" id="page-8">
-                <div class="page-content">
-                    <div id="capitulo5" class="chapter">
-                        <h3>Capítulo 5: Os Objetivos Fundamentais (Art. 3º)</h3>
-                        <p>Se os fundamentos do art. 1º estabelecem a base de valores da República, os objetivos fundamentais do art. 3º indicam os fins a serem perseguidos pelo Estado e pela sociedade. São metas que orientam a ação estatal e dão concretude aos valores fundamentais.</p>
-                        
-                        <h4>I - Construir uma sociedade livre, justa e solidária</h4>
-                        <p>Este objetivo sintetiza o projeto de sociedade desejado pela Constituição. Uma sociedade livre garante as liberdades individuais e coletivas; justa assegura a equidade e a igualdade de oportunidades; solidária promove o senso de comunidade e responsabilidade social.</p>
-                        
-                        <h4>II - Garantir o desenvolvimento nacional</h4>
-                        <p>O desenvolvimento nacional não se restringe ao crescimento econômico. Deve ser compreendido como desenvolvimento integral, que inclui dimensões econômicas, sociais, culturais e ambientais, sempre com foco na melhoria da qualidade de vida da população.</p>
-                        
-                        <h4>III - Erradicar a pobreza e a marginalização e reduzir as desigualdades sociais e regionais</h4>
-                        <p>Este é um dos objetivos mais ambiciosos e, ao mesmo tempo, mais desafiadores. A Constituição assume explicitamente o compromisso com a justiça social, reconhecendo que a simples igualdade formal não é suficiente em uma sociedade marcada por profundas desigualdades.</p>
-                        
-                        <h4>IV - Promover o bem de todos, sem preconceitos de origem, raça, sexo, cor, idade e quaisquer outras formas de discriminação</h4>
-                        <p>Este objetivo estabelece o princípio da não-discriminação como diretriz fundamental para a ação estatal e para as relações sociais. É a base constitucional para políticas de ações afirmativas e para o combate a todas as formas de preconceito.</p>
-                        
-                        <div class="defense">
-                            <h4>Potencial Transformador:</h4>
-                            <p>Os objetivos fundamentais têm um enorme potencial transformador. Eles podem e devem ser utilizados como parâmetro para a avaliação de políticas públicas e para o controle de constitucionalidade. Uma lei ou política que viole estes objetivos pode ser considerada inconstitucional, mesmo que não infrinja nenhuma norma específica.</p>
-                        </div>
-                        
-                        <div class="critique">
-                            <h4>Desafios de Implementação:</h4>
-                            <p>A realização destes objetivos esbarra em obstáculos estruturais. A concentração de renda, as desigualdades regionais históricas e a falta de vontade política têm impedido a plena concretização destas metas. Muitas vezes, as políticas públicas parecem caminhar na direção oposta a estes objetivos constitucionais.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">8</div>
-            </div>
-
-            <div class="page" id="page-9">
-                <div class="page-content">
-                    <div id="capitulo6" class="chapter">
-                        <h3>Capítulo 6: Os Princípios das Relações Internacionais (Art. 4º)</h3>
-                        <p>O artigo 4º estabelece os princípios que devem reger o Brasil em suas relações com outros países e organizações internacionais. Estes princípios refletem a posição que o país busca ocupar no cenário global e seus valores fundamentais.</p>
-                        
-                        <h4>I - Independência nacional</h4>
-                        <p>Este princípio reafirma a soberania nacional nas relações internacionais, assegurando que o Brasil tome suas decisões de forma autônoma, sem subordinação a potências estrangeiras.</p>
-                        
-                        <h4>II - Prevalência dos direitos humanos</h4>
-                        <p>Este é um dos princípios mais importantes e modernos da Constituição. O Brasil se compromete a respeitar e promover os direitos humanos não apenas internamente, mas também em sua política externa.</p>
-                        
-                        <h4>III - Autodeterminação dos povos</h4>
-                        <p>O Brasil respeita o direito de cada povo a determinar seu próprio destino político, econômico, social e cultural, sem interferência externa.</p>
-                        
-                        <h4>IV - Não-intervenção</h4>
-                        <p>Corolário do princípio anterior, a não-intervenção proíbe a ingerência em assuntos internos de outros Estados.</p>
-                        
-                        <h4>V - Igualdade entre os Estados</h4>
-                        <p>Reconhece que todos os Estados, independentemente de seu tamanho ou poder, são formalmente iguais perante o direito internacional.</p>
-                        
-                        <h4>VI - Defesa da paz</h4>
-                        <p>O Brasil se compromete com a solução pacífica de controvérsias e rejeita o uso da força nas relações internacionais.</p>
-                        
-                        <h4>VII - Solução pacífica dos conflitos</h4>
-                        <p>Este princípio complementa o anterior, estabelecendo a preferência por mecanismos diplomáticos e jurídicos para resolver disputas internacionais.</p>
-                        
-                        <h4>VIII - Repúdio ao terrorismo e ao racismo</h4>
-                        <p>O Brasil condena veementemente estas práticas, tanto no plano interno quanto internacional.</p>
-                        
-                        <h4>IX - Cooperação entre os povos para o progresso da humanidade</h4>
-                        <p>Reconhece que os desafios globais exigem cooperação internacional e que o progresso deve beneficiar toda a humanidade.</p>
-                        
-                        <h4>X - Concessão de asilo político</h4>
-                        <p>O Brasil mantém a tradição de conceder asilo a perseguidos políticos, reafirmando seu compromisso com a liberdade e a democracia.</p>
-                        
-                        <div class="critique">
-                            <h4>Tensões na Prática:</h4>
-                            <p>Na prática, a aplicação destes princípios tem gerado tensões. Por exemplo, o princípio da não-intervenção pode entrar em conflito com o princípio da prevalência dos direitos humanos em casos de graves violações em outros países. A política externa brasileira tem oscilado entre diferentes interpretações destes princípios ao longo dos anos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">9</div>
-            </div>
-
-            <div class="page" id="page-10">
-                <div class="page-content">
-                    <section id="parte3">
-                        <h2>Parte III: A Eficácia Material</h2>
-                        
-                        <div id="capitulo7" class="chapter">
-                            <h3>Capítulo 7: O Sistema de Direitos e Garantias: Entre a Proclamação e a Efetivação</h3>
-                            <p>O extenso catálogo de direitos e garantias fundamentais é uma das marcas mais distintivas da CF/88. No entanto, a mera previsão formal destes direitos não garante sua efetivação. Este capítulo analisa a distância entre a proclamação constitucional e a realidade dos direitos no Brasil.</p>
-                            
-                            <h4>Direitos Sociais: A Batalha pela Efetividade</h4>
-                            <p>Os direitos sociais (saúde, educação, trabalho, previdência social, etc.) representam o coração do projeto de justiça social da Constituição. No entanto, sua implementação tem sido marcada por desafios persistentes:</p>
-                            <ul>
-                                <li><strong>Saúde:</strong> Apesar da previsão de um sistema universal (SUS), o subfinanciamento crônico e as desigualdades regionais comprometem a qualidade do atendimento.</li>
-                                <li><strong>Educação:</strong> A universalização do acesso ao ensino fundamental foi um avanço, mas a qualidade do ensino e o acesso aos níveis superiores permanecem como desafios.</li>
-                                <li><strong>Trabalho:</strong> A flexibilização das leis trabalhistas e o crescimento da informalidade têm colocado em risco muitas das conquistas históricas dos trabalhadores.</li>
-                            </ul>
-                            
-                            <h4>Direitos Individuais: A Ameaça da Violência e da Discriminação</h4>
-                            <p>Os direitos individuais, como a liberdade, a igualdade e a propriedade, também enfrentam obstáculos para sua plena realização:</p>
-                            <ul>
-                                <li><strong>Segurança Pública:</strong> A violência urbana e a atuação por vezes violenta das forças policiais ameaçam o direito à vida e à segurança.</li>
-                                <li><strong>Igualdade:</strong> A discriminação racial, de gênero e contra minorias persiste, apesar da previsão constitucional de igualdade.</li>
-                                <li><strong>Acesso à Justiça:</strong> A morosidade do Judiciário e as barreiras econômicas limitam o efetivo acesso à justiça para grande parte da população.</li>
-                            </ul>
-                            
-                            <div class="defense">
-                                <h4>Avancos Inegáveis:</h4>
-                                <p>Apesar dos desafios, é importante reconhecer os avanços conquistados. A CF/88 criou instrumentos importantes para a defesa dos direitos, como o Mandado de Injunção, o Habeas Data e a Ação Civil Pública. Além disso, o Ministério Público foi fortalecido como instituição responsável pela defesa dos direitos coletivos e difusos.</p>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-                <div class="page-number">10</div>
-            </div>
-
-            <div class="page" id="page-11">
-                <div class="page-content">
-                    <div id="capitulo8" class="chapter">
-                        <h3>Capítulo 8: A Organização do Estado: Federalismo, Separação de Poderes e Crises Institucionais</h3>
-                        <p>A organização do Estado estabelecida pela CF/88 busca equilibrar a autonomia dos entes federados com a necessária unidade nacional, além de distribuir o poder entre os três Poderes da República. Este capítulo analisa como esta estrutura tem funcionado na prática.</p>
-                        
-                        <h4>O Federalismo Brasileiro: Entre a Autonomia e a Descoordenação</h4>
-                        <p>O federalismo brasileiro é marcado por tensões entre União, Estados e Municípios:</p>
-                        <ul>
-                            <li><strong>Concentração de Recursos:</strong> A União concentra a maior parte da arrecadação tributária, criando dependência dos entes subnacionais.</li>
-                            <li><strong>Guerra Fiscal:</strong> Estados e Municípios competem entre si através de incentivos fiscais, muitas vezes em detrimento da receita pública.</li>
-                            <li><strong>Desigualdades Regionais:</strong> As profundas diferenças econômicas entre as regiões desafiam o princípio federativo.</li>
-                        </ul>
-                        
-                        <h4>A Separação de Poderes: Equilíbrio ou Conflito?</h4>
-                        <p>A teoria da separação de poderes pressupõe um sistema de freios e contrapesos que evite a concentração de poder. Na prática, o sistema brasileiro tem sido marcado por:</p>
-                        <ul>
-                            <li><strong>Presidencialismo de Coalizão:</strong> A necessidade de formar majorias no Congresso leva a negociações que muitas vezes distorcem a vontade popular.</li>
-                            <li><strong>Judicialização da Política:</strong> O Judiciário tem sido frequentemente chamado a decidir sobre questões que tradicionalmente seriam resolvidas no âmbito político.</li>
-                            <li><strong>Crises Institucionais:</strong> Os frequentes conflitos entre os Poderes têm gerado instabilidade política e prejudicado a governabilidade.</li>
-                        </ul>
-                        
-                        <div class="critique">
-                            <h4>Disfunções do Sistema:</h4>
-                            <p>A organização do Estado estabelecida pela CF/88 apresenta disfunções significativas. O sistema político é fragmentado e instável, o federalismo é assimétrico e ineficiente, e os mecanismos de controle são frequentemente insuficientes para coibir abusos de poder. Estas disfunções comprometem a capacidade do Estado de realizar os objetivos constitucionais.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">11</div>
-            </div>
-
-            <div class="page" id="page-12">
-                <div class="page-content">
-                    <div id="capitulo9" class="chapter">
-                        <h3>Capítulo 9: A Ordem Econômica e Financeira: O Desafio do Desenvolvimento com Justiça Social</h3>
-                        <p>A ordem econômica na CF/88 busca conciliar a livre iniciativa com a justiça social, estabelecendo um modelo de desenvolvimento que respeite os princípios constitucionais. Este capítulo examina os sucessos e fracassos desta tentativa de conciliação.</p>
-                        
-                        <h4>Os Princípios da Ordem Econômica</h4>
-                        <p>O art. 170 estabelece os princípios que devem reger a ordem econômica, incluindo a soberania nacional, a propriedade privada, a função social da propriedade, a livre concorrência, a defesa do consumidor, a defesa do meio ambiente, a redução das desigualdades regionais e sociais, e a busca do pleno emprego.</p>
-                        
-                        <h4>Tensões entre Livre Iniciativa e Intervenção Estatal</h4>
-                        <p>A ordem econômica constitucional estabelece um equilíbrio delicado entre o mercado e o Estado:</p>
-                        <ul>
-                            <li><strong>Regulação Econômica:</strong> O Estado tem o poder de intervir na economia para corrigir falhas de mercado e promover o bem-estar social.</li>
-                            <li><strong>Função Social da Propriedade:</strong> A propriedade privada não é um direito absoluto; deve cumprir uma função social.</li>
-                            <li><strong>Proteção do Trabalhador:</strong> A ordem econômica deve valorizar o trabalho humano como fundamento da sociedade.</li>
-                        </ul>
-                        
-                        <h4>Desafios Contemporâneos</h4>
-                        <p>A ordem econômica constitucional enfrenta novos desafios no século XXI:</p>
-                        <ul>
-                            <li><strong>Globalização:</strong> A integração econômica global limita a capacidade de Estados nacionais de regular suas economias.</li>
-                            <li><strong>Tecnologia:</strong> As transformações tecnológicas criam novos setores econômicos e tornam obsoletas algumas formas de regulação.</li>
-                            <li><strong>Sustentabilidade:</strong> A necessidade de conciliar desenvolvimento econômico com preservação ambiental torna-se cada vez mais urgente.</li>
-                        </ul>
-                        
-                        <div class="defense">
-                            <h4>Potencial Não Realizado:</h4>
-                            <p>A ordem econômica da CF/88 contém os elementos necessários para um modelo de desenvolvimento includente e sustentável. No entanto, este potencial não foi plenamente realizado devido a opções políticas que priorizaram interesses setoriais em detrimento do interesse coletivo.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">12</div>
-            </div>
-
-            <div class="page" id="page-13">
-                <div class="page-content">
-                    <section id="parte4">
-                        <h2>Parte IV: Conclusões e Perspectivas</h2>
-                        
-                        <div id="capitulo10" class="chapter">
-                            <h3>Capítulo 10: Balanço de 35 Anos: Conquistas, Desafios e Retrocessos</h3>
-                            <p>Após mais de três décadas de vigência, é possível fazer um balanço dos avanços e retrocessos na implementação da CF/88. Este capítulo sintetiza as principais conclusões da análise desenvolvida ao longo desta obra.</p>
-                            
-                            <h4>Conquistas Inegáveis</h4>
-                            <p>Apesar de todas as críticas, a CF/88 trouxe conquistas fundamentais para o país:</p>
-                            <ul>
-                                <li><strong>Consolidação Democrática:</strong> A Constituição foi essencial para a transição e consolidação da democracia no Brasil.</li>
-                                <li><strong>Ampliação de Direitos:</strong> O extenso catálogo de direitos fundamentais representou um avanço civilizatório.</li>
-                                <li><strong>Fortalecimento Institucional:</strong> Criou-se um sistema mais robusto de freios e contrapesos entre os Poderes.</li>
-                                <li><strong>Reconhecimento da Diversidade:</strong> A Constituição reconheceu a pluralidade da sociedade brasileira e garantiu direitos a grupos historicamente marginalizados.</li>
-                            </ul>
-                            
-                            <h4>Desafios Persistentes</h4>
-                            <p>Muitos dos desafios identificados nos primeiros anos da Constituição permanecem atuais:</p>
-                            <ul>
-                                <li><strong>Desigualdade Social:</strong> O Brasil continua sendo um dos países mais desiguais do mundo.</li>
-                                <li><strong>Violência:</strong> A violência urbana e a letalidade policial permanecem como graves problemas.</li>
-                                <li><strong>Corrupção:</strong> A corrupção sistêmica mina a eficácia do Estado e a confiança nas instituições.</li>
-                                <li><strong>Baixa Qualidade dos Serviços Públicos:</strong> Saúde, educação e segurança pública continuam com sérios problemas de qualidade e acesso.</li>
-                            </ul>
-                            
-                            <h4>Retrocessos Preocupantes</h4>
-                            <p>Nos últimos anos, observamos preocupantes retrocessos em relação aos princípios constitucionais:</p>
-                            <ul>
-                                <li><strong>Erosão Democrática:</strong> Ataques às instituições democráticas e à liberdade de expressão têm se intensificado.</li>
-                                <li><strong>Flexibilização de Direitos Trabalhistas:</strong> Reformas trabalhistas têm fragilizado a proteção aos trabalhadores.</li>
-                                <li><strong>Desmonte de Políticas Sociais:</strong> Cortes orçamentários têm afetado severamente políticas públicas essenciais.</li>
-                                <li><strong>Ameaças Ambientais:</strong> O desmonte da legislação ambiental ameaça o patrimônio natural do país.</li>
-                            </ul>
-                        </div>
-                    </section>
-                </div>
-                <div class="page-number">13</div>
-            </div>
-
-            <div class="page" id="page-14">
-                <div class="page-content">
-                    <div id="capitulo11" class="chapter">
-                        <h3>Capítulo 11: Por uma Hermenêutica Constitucional Transformadora</h3>
-                        <p>Diante do cenário de conquistas, desafios e retrocessos, este capítulo propõe uma hermenêutica constitucional comprometida com a realização dos princípios fundamentais da CF/88. Não se trata de uma interpretação qualquer, mas de uma leitura transformadora que busque efetivar o projeto constitucional.</p>
-                        
-                        <h4>Os Pilares da Hermenêutica Transformadora</h4>
-                        <p>Uma hermenêutica constitucional transformadora deve se basear em três pilares fundamentais:</p>
-                        <ol>
-                            <li><strong>Compromisso com os Princípios Fundamentais:</strong> A interpretação deve sempre partir dos princípios fundamentais da Constituição, especialmente a dignidade da pessoa humana, a cidadania e os valores sociais do trabalho.</li>
-                            <li><strong>Efetividade dos Direitos:</strong> A interpretação deve buscar a máxima efetividade dos direitos fundamentais, superando obstáculos formais que impeçam sua realização.</li>
-                            <li><strong>Diálogo Institucional:</strong> A interpretação constitucional deve promover o diálogo entre os Poderes e a sociedade civil, reconhecendo que a realização da Constituição é uma tarefa coletiva.</li>
-                        </ol>
-                        
-                        <h4>O Papel dos Operadores do Direito</h4>
-                        <p>Juízes, promotores, advogados e todos os operadores do direito têm uma responsabilidade especial na realização do projeto constitucional. Eles não são meros aplicadores mecânicos de normas, mas intérpretes criativos que devem buscar a concretização dos valores constitucionais.</p>
-                        
-                        <h4>A Sociedade Civil como Guardiã da Constituição</h4>
-                        <p>A defesa da Constituição não é tarefa exclusiva das instituições oficiais. A sociedade civil, através de organizações, movimentos sociais e cidadãos engajados, tem um papel fundamental na vigilância e na promoção dos valores constitucionais.</p>
-                        
-                        <div class="defense">
-                            <h4>Conclusão:</h4>
-                            <p>A CF/88, apesar de suas imperfeições, representa um projeto civilizatório que merece ser defendido e realizado. Passados 35 anos, o desafio não é apenas preservar o texto constitucional, mas garantir que seus princípios se materializem na vida concreta dos brasileiros. Isto exige uma hermenêutica transformadora, comprometida com a justiça social e a dignidade humana. O futuro da Constituição dependerá, em grande medida, da nossa capacidade de ler e aplicar seu texto de forma a realizar suas promessas de uma sociedade mais livre, justa e solidária.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="page-number">14</div>
-            </div>
-
-            <div class="page" id="page-15">
-                <div class="page-content">
-                    <section id="posfacio" class="chapter">
-                        <h2>Posfácio: A Constituição como Projeto de Nação</h2>
-                        <p>Ao final desta jornada pela CF/88, fica claro que ela é muito mais que um documento jurídico. É um projeto de nação, um pacto social que estabelece os alicerces para a construção de um Brasil mais justo, democrático e próspero.</p>
-                        <p>Os 35 anos de vigência da Constituição nos mostram que este projeto está inacabado. Avançamos em muitas áreas, mas retrocedemos em outras. Conquistamos direitos, mas ainda lutamos por sua efetivação. Construímos instituições, mas precisamos fortalecê-las contra ameaças internas e externas.</p>
-                        <p>O maior desafio que enfrentamos hoje não é a falta de um projeto constitucional, mas a falta de vontade política para realizá-lo. A CF/88 nos oferece as ferramentas necessárias para construir uma sociedade mais igualitária e digna. Cabe a nós, cidadãos, exigir que estas ferramentas sejam utilizadas para o bem comum.</p>
-                        <p>A Constituição de 1988 nasceu do anseio por democracia e justiça social. Mantê-la viva exige mais que sua mera preservação formal; exige que lutemos, a cada dia, pela realização de seus princípios fundamentais. Só assim a "Constituição Cidadã" deixará de ser uma promessa e se tornará, finalmente, uma realidade na vida de todos os brasileiros.</p>
-                    </section>
-                </div>
-                <div class="page-number">15</div>
-            </div>
-
-            <div class="page" id="page-16">
-                <div class="page-content">
-                    <section id="bibliografia" class="chapter">
-                        <h2>Bibliografia</h2>
-                        <h3>Obras Citadas e Consultadas</h3>
-                        
-                        <h4>Direito Constitucional</h4>
-                        <ul>
-                            <li>ALEXY, Robert. Teoria dos Direitos Fundamentais. São Paulo: Malheiros, 2008.</li>
-                            <li>BARROSO, Luís Roberto. Curso de Direito Constitucional Contemporâneo. São Paulo: Saraiva, 2018.</li>
-                            <li>BONAVIDES, Paulo. Curso de Direito Constitucional. São Paulo: Malheiros, 2019.</li>
-                            <li>CANOTILHO, J. J. Gomes. Direito Constitucional e Teoria da Constituição. Coimbra: Almedina, 2003.</li>
-                            <li>DWORKIN, Ronald. Levando os Direitos a Sério. São Paulo: Martins Fontes, 2002.</li>
-                            <li>MENDES, Gilmar Ferreira; BRANCO, Paulo Gustavo Gonet. Curso de Direito Constitucional. São Paulo: Saraiva, 2019.</li>
-                            <li>SILVA, José Afonso da. Curso de Direito Constitucional Positivo. São Paulo: Malheiros, 2017.</li>
-                        </ul>
-                        
-                        <h4>História Constitucional Brasileira</h4>
-                        <ul>
-                            <li>FAORO, Raymundo. Os Donos do Poder. São Paulo: Globo, 2012.</li>
-                            <li>LAMOUNIER, Bolívar. Da Independência a Lula: Dois Séculos de Política Brasileira. São Paulo: Augurium, 2005.</li>
-                            <li>SKIDMORE, Thomas E. Brasil: De Castelo a Tancredo. Rio de Janeiro: Paz e Terra, 1988.</li>
-                        </ul>
-                        
-                        <h4>Teoria Política e Filosofia do Direito</h4>
-                        <ul>
-                            <li>BOBBIO, Norberto. A Era dos Direitos. Rio de Janeiro: Elsevier, 2004.</li>
-                            <li>HABERMAS, Jürgen. Direito e Democracia: Entre Facticidade e Validade. Rio de Janeiro: Tempo Brasileiro, 2003.</li>
-                            <li>RAWLS, John. Uma Teoria da Justiça. São Paulo: Martins Fontes, 2008.</li>
-                        </ul>
-                        
-                        <h4>Análises Específicas da CF/88</h4>
-                        <ul>
-                            <li>FERNANDES, Bernardo Gonçalves. Curso de Direito Constitucional. Salvador: JusPodivm, 2020.</li>
-                            <li>LENZA, Pedro. Direito Constitucional Esquematizado. São Paulo: Saraiva, 2021.</li>
-                            <li>SARLET, Ingo Wolfgang. A Eficácia dos Direitos Fundamentais. Porto Alegre: Livraria do Advogado, 2018.</li>
-                        </ul>
-                    </section>
-                </div>
-                <div class="page-number">16</div>
-            </div>
-        </div>
-
-        <footer>
-            <p>© 2023 Est. de Direito Alex Peixoto. Todos os direitos reservados.</p>
-            <p>Este trabalho acadêmico foi desenvolvido para fins educacionais e de pesquisa.</p>
-        </footer>
     </div>
 
-    <div class="fullscreen-controls" id="fullscreen-controls" style="display: none;">
-        <span class="page-indicator" id="fullscreen-page-indicator" style="color: white;">Página 1 de 16</span>
-        <div class="font-controls">
-            <button class="font-btn" id="font-decrease-btn" title="Diminuir Fonte">A-</button>
-            <button class="font-btn" id="font-reset-btn" title="Resetar Fonte">A</button>
-            <button class="font-btn" id="font-increase-btn" title="Aumentar Fonte">A+</button>
+    <div class="chapter" id="prefacio">
+        <h2>Prefácio</h2>
+        <p>Há textos jurídicos que são meros regulamentos de poder. Há outros que se aspiram a ser a alma de uma nação. A Constituição Federal de 1988 pertence, inegavelmente, a este segundo grupo. Nascer das cinzas de um longo período autoritário, ela carregava em seu bojo não apenas a tarefa de reorganizar o Estado, mas a missão quase messiânica de refundar o pacto social brasileiro sobre novas bases: as da dignidade, da cidadania e da justiça social.</p>
+        <p>Ao longo destas páginas, não trataremos a Carta como um documento estático, um fóssil jurídico a ser dissecado em artigos e incisos. Pretendemos analisá-la como um organismo vivo, pulsante, que respira os ares da sociedade que busca regular. Ela existe em um estado de tensão permanente: entre o texto e a realidade, a promessa e o desempenho, a normatividade e a efetividade.</p>
+        <p>Esta obra é, portanto, um exercício de realismo constitucional. Defenderemos com vigor o núcleo intangível de conquistas que ela representa, mas também criticaremos, com a franqueza necessária à academia, suas disfunções, seu idealismo por vezes ingênuo e o abismo que frequentemente separa seu mundo de palavras do mundo concreto da vida dos cidadãos. Adentremos, pois, na análise deste "gigante" que, passadas mais de três décadas, ainda luta para encontrar seu pleno lugar na materialidade da experiência brasileira.</p>
+    </div>
+
+    <div class="chapter" id="introducao">
+        <h2>Introdução: O Gigante de Papel?</h2>
+        <p>A pergunta que intitula esta introdução é, deliberadamente, provocativa. "Constituição" e "Papel" são termos que, no senso comum, parecem se atrair. O risco de uma Carta Magna tornar-se letra morta, uma bela coleção de princípios desconectados da prática, é uma ameaça real em qualquer democracia jovem. O objetivo central deste livro é investigar, à luz de uma análise material, em que medida a Constituição Federal de 1988 (CF/88) conseguiu escapar a esse destino.</p>
+        <p>A <span class="highlight">análise material</span> que propomos vai além da simples exegese do texto. Preocupa-se com o <em>direito constitucional vivo</em> – como as normas são interpretadas, aplicadas e, sobretudo, <em>sentidas</em> na vida cotidiana. Interessa-nos saber se o direito à saúde do art. 6º se materializa em um atendimento digno no SUS; se a dignidade da pessoa humana do art. 1º serve como escudo contra a humilhação nas filas ou na violência policial; se a livre iniciativa do art. 170 consegue florescer em um ambiente de burocracia e instabilidade jurídica.</p>
+    </div>
+
+    <div class="chapter" id="capitulo1">
+        <h2>Parte I: A Gênese e a Arquitetura</h2>
+        <h3>Capítulo 1: O Parto da Democracia: O Processo Constituinte de 1987-88</h3>
+        <img src="https://www.camara.leg.br/midias/image/2023/10/foto-agencia-camara-constituinte-88-2-1200x800.jpeg" alt="Sessão da Assembleia Nacional Constituinte de 1988" class="chapter-image">
+        <p>A CF/88 não pode ser compreendida sem se olhar para o seu momento de gestação. Ela foi o parto, por vezes traumático, da redemocratização. Após 21 anos de regime militar, a sociedade brasileira respirava os ares da <em>abertura lenta, gradual e segura</em>, mas ansiava por uma ruptura democrática definitiva. A Assembleia Nacional Constituinte (ANC), instalada em 1987, tornou-se a arena onde esse ansioso espírito nacional se materializou.</p>
+        <p>Essa efersvencência explica tanto a grandeza quanto uma das principais críticas que se faz à Carta: seu carácter <span class="highlight">analítico e detalhista</span>. Em seu afã de atender a demandas históricas reprimidas e de evitar brechas para o arbítrio, o constituinte "originário" acabou por incorporar ao texto uma série de matérias que, em outras tradições, estariam reservadas à lei ordinária.</p>
+        <div class="critique">
+            <h4>Crítica:</h4>
+            <p>Este detalhismo excessivo engessa o ordenamento. Temas complexos e dinâmicos, como o regime jurídico dos servidores públicos ou detalhes do sistema financeiro nacional, foram constitucionalizados. Isso dificulta a adaptação do Estado às novas realidades e judicializa questões que deveriam ser resolvidas no âmbito político-legislativo.</p>
+        </div>
+        <div class="defense">
+            <h4>Defesa:</h4>
+            <p>Contudo, é preciso entender o contexto. Esse "detalhismo" foi a resposta a um período em que a lei era constantemente alterada por atos arbitrários do Executivo. O constituinte quis, justamente, "travar" certas conquistas, tornando-as cláusulas pétreas ou próximas disso, para evitar retrocessos. Foi uma opção política consciente por uma Constituição "blindada", reflexo do trauma com o autoritarismo recente.</p>
         </div>
     </div>
     
-    <button class="exit-fullscreen-btn" id="exit-fullscreen-btn" style="display: none;">Sair da Tela Cheia</button>
+    <div class="chapter" id="capitulo2">
+        <h3>Capítulo 2: A Estrutura da Carta: Uma Análise Formal</h3>
+        <p>A CF/88 organiza-se em uma estrutura lógica e hierárquica. Começa pelo <span class="highlight">Preâmbulo</span>, seguido pelo <span class="highlight">Título I</span> com os <span class="highlight">Princípios Fundamentais</span> (arts. 1º a 4º). Esta é a base de todo o edifício.</p>
+        <p>Os <span class="highlight">Direitos e Garantias Fundamentais</span> (Título II) representam o coração da "Constituição Cidadã". A <span class="highlight">Organização do Estado</span> (Título III) e a <span class="highlight">Organização dos Poderes</span> (Título IV) detalham a estrutura federativa e a separação de poderes. Os títulos seguintes abordam a <span class="highlight">Defesa do Estado</span>, a <span class="highlight">Tributação</span>, a <span class="highlight">Ordem Econômica</span> e a <span class="highlight">Ordem Social</span>.</p>
+    </div>
 
-    <script>
-        // Variáveis globais
-        let currentPage = 1;
-        const totalPages = 16;
-        let isFullscreen = false;
-        let startX = 0;
-        let endX = 0;
-        const swipeThreshold = 50; // Distância mínima para considerar um swipe
-        let currentFontSize = 1; // Unidade em 'rem' para escalabilidade
-        const initialFontSize = 1.1; // Valor inicial em rem para o modo tela cheia
-        const maxFontSize = 2.0;
-        const minFontSize = 0.8;
-        const fontSizeStep = 0.1;
+    <div class="chapter" id="capitulo3">
+        <h3>Capítulo 3: A Teoria dos Princípios: A Coluna Vertebral do Ordenamento</h3>
+        <p>É fundamental a distinção entre <span class="highlight">regras</span> (normas de aplicação "tudo ou nada") e <span class="highlight">princípios</span> (mandados de otimização, que ordenam que algo seja realizado na maior medida possível). Os Princípios Fundamentais da CF/88 são, em sua essência, princípios nesse sentido técnico. Eles são a coluna vertebral porque orientam a interpretação de todas as outras normas do ordenamento.</p>
+    </div>
 
-        // Elementos DOM
-        const flipbook = document.getElementById('flipbook');
-        const mainControls = document.getElementById('main-controls');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const pageIndicator = document.getElementById('page-indicator');
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
-        const fullscreenControls = document.getElementById('fullscreen-controls');
-        const exitFullscreenBtn = document.getElementById('exit-fullscreen-btn');
-        const fullscreenPageIndicator = document.getElementById('fullscreen-page-indicator');
-        
-        // Novos elementos para controle de fonte
-        const fontIncreaseBtn = document.getElementById('font-increase-btn');
-        const fontDecreaseBtn = document.getElementById('font-decrease-btn');
-        const fontResetBtn = document.getElementById('font-reset-btn');
-        const pageContents = document.querySelectorAll('.page-content');
+    <div class="chapter" id="capitulo4">
+        <h2>Parte II: Os Princípios Fundamentais em Análise</h2>
+        <h3>Capítulo 4: Os Fundamentos da República (Art. 1º)</h3>
+        <p>O artigo 1º da CF/88 estabelece os pilares sobre os quais se ergue a República: <b>I - Soberania</b>, <b>II - Cidadania</b>, <b>III - Dignidade da Pessoa Humana</b>, <b>IV - Valores Sociais do Trabalho e da Livre Iniciativa</b>, e <b>V - Pluralismo Político</b>. Estes fundamentos não são meras declarações retóricas; são valores estruturantes que devem orientar toda a interpretação e aplicação do direito no país.</p>
+    </div>
 
-        // Função para navegar para uma página específica
-        function goToPage(pageNumber) {
-            if (pageNumber < 1 || pageNumber > totalPages) return;
-            
-            const currentPageElement = document.getElementById(`page-${currentPage}`);
-            if (currentPageElement) {
-                currentPageElement.classList.remove('active');
-            }
-            
-            currentPage = pageNumber;
-            
-            const newPageElement = document.getElementById(`page-${currentPage}`);
-            if (newPageElement) {
-                newPageElement.classList.add('active');
-            }
-            
-            updatePageIndicators();
-            updateButtonStates();
-        }
+    <div class="chapter" id="capitulo5">
+        <h3>Capítulo 5: Os Objetivos Fundamentais (Art. 3º)</h3>
+        <p>Os objetivos fundamentais indicam os fins a serem perseguidos pelo Estado: <b>I - Construir uma sociedade livre, justa e solidária</b>; <b>II - Garantir o desenvolvimento nacional</b>; <b>III - Erradicar a pobreza e a marginalização e reduzir as desigualdades</b>; e <b>IV - Promover o bem de todos, sem preconceitos</b>.</p>
+    </div>
 
-        // Função para ir para a página anterior
-        function goToPrevPage() {
-            if(currentPage > 1) {
-                goToPage(currentPage - 1);
-            }
-        }
+    <div class="chapter" id="capitulo6">
+        <h3>Capítulo 6: Os Princípios das Relações Internacionais (Art. 4º)</h3>
+        <p>O artigo 4º estabelece os princípios que regem o Brasil em suas relações internacionais, como a <b>independência nacional</b>, a <b>prevalência dos direitos humanos</b>, a <b>autodeterminação dos povos</b>, a <b>não-intervenção</b> e a <b>defesa da paz</b>.</p>
+    </div>
 
-        // Função para ir para a próxima página
-        function goToNextPage() {
-            if(currentPage < totalPages) {
-                goToPage(currentPage + 1);
-            }
-        }
+    <div class="chapter" id="capitulo7">
+        <h2>Parte III: A Eficácia Material</h2>
+        <h3>Capítulo 7: O Sistema de Direitos e Garantias: Entre a Proclamação e a Efetivação</h3>
+        <p>O extenso catálogo de direitos e garantias fundamentais é uma das marcas da CF/88. No entanto, a mera previsão formal não garante sua efetivação. Os direitos sociais (saúde, educação) enfrentam desafios de subfinanciamento, enquanto os direitos individuais (segurança, igualdade) são ameaçados pela violência e discriminação.</p>
+    </div>
+    
+    <div class="chapter" id="capitulo8">
+        <h3>Capítulo 8: A Organização do Estado: Federalismo, Separação de Poderes e Crises Institucionais</h3>
+        <p>A organização do Estado estabelecida pela CF/88 busca equilibrar a autonomia dos entes federados e distribuir o poder. Na prática, o federalismo é marcado pela concentração de recursos e a separação de poderes por crises institucionais e pela judicialização da política.</p>
+    </div>
 
-        // Função para atualizar os indicadores de página
-        function updatePageIndicators() {
-            pageIndicator.textContent = `Página ${currentPage} de ${totalPages}`;
-            fullscreenPageIndicator.textContent = `Página ${currentPage} de ${totalPages}`;
-        }
+    <div class="chapter" id="capitulo9">
+        <h3>Capítulo 9: A Ordem Econômica e Financeira: O Desafio do Desenvolvimento com Justiça Social</h3>
+        <p>A ordem econômica na CF/88 busca conciliar a livre iniciativa com a justiça social. Este equilíbrio é desafiado por fatores como a globalização, as transformações tecnológicas e a necessidade de sustentabilidade ambiental.</p>
+    </div>
 
-        // Função para atualizar o estado dos botões (habilitar/desabilitar)
-        function updateButtonStates() {
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
-        }
+    <div class="chapter" id="capitulo10">
+        <h2>Parte IV: Conclusões e Perspectivas</h2>
+        <h3>Capítulo 10: Balanço de 35 Anos: Conquistas, Desafios e Retrocessos</h3>
+        <p>A CF/88 trouxe conquistas como a consolidação democrática e a ampliação de direitos. No entanto, desafios como a desigualdade social, a violência e a corrupção persistem. Recentemente, observam-se retrocessos preocupantes, como a erosão democrática e o desmonte de políticas sociais.</p>
+    </div>
 
-        // Função para alterar o tamanho da fonte
-        function changeFontSize(direction) {
-            let newSize;
-            if (direction === 'increase') {
-                newSize = Math.min(maxFontSize, currentFontSize + fontSizeStep);
-            } else if (direction === 'decrease') {
-                newSize = Math.max(minFontSize, currentFontSize - fontSizeStep);
-            } else { // reset
-                newSize = initialFontSize;
-            }
-            
-            currentFontSize = newSize;
-            pageContents.forEach(content => {
-                content.style.fontSize = `${currentFontSize}rem`;
-            });
-        }
+    <div class="chapter" id="capitulo11">
+        <h3>Capítulo 11: Por uma Hermenêutica Constitucional Transformadora</h3>
+        <p>Diante do cenário atual, propõe-se uma hermenêutica constitucional comprometida com a realização dos princípios fundamentais da CF/88, baseada no compromisso com os princípios, na efetividade dos direitos e no diálogo institucional.</p>
+    </div>
 
-        // Função para alternar o modo de tela cheia
-        function toggleFullscreen() {
-            if (!isFullscreen) {
-                // Entrar no modo tela cheia
-                flipbook.classList.add('fullscreen');
-                mainControls.style.display = 'none'; // Oculta os controles principais
-                fullscreenControls.style.display = 'flex';
-                exitFullscreenBtn.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Impede rolagem do corpo
-                
-                // Define o tamanho inicial da fonte para o modo tela cheia
-                currentFontSize = initialFontSize;
-                changeFontSize('reset');
-                
-                isFullscreen = true;
-            } else {
-                // Sair do modo tela cheia
-                flipbook.classList.remove('fullscreen');
-                mainControls.style.display = 'flex'; // Mostra os controles principais
-                fullscreenControls.style.display = 'none';
-                exitFullscreenBtn.style.display = 'none';
-                document.body.style.overflow = ''; // Restaura rolagem do corpo
-                
-                // Reseta o estilo da fonte
-                pageContents.forEach(content => {
-                    content.style.fontSize = '';
-                });
+    <div class="chapter" id="posfacio">
+        <h2>Posfácio: A Constituição como Projeto de Nação</h2>
+        <p>Ao final desta jornada, fica claro que a CF/88 é muito mais que um documento jurídico. É um projeto de nação inacabado. O maior desafio que enfrentamos hoje não é a falta de um projeto constitucional, mas a falta de vontade política para realizá-lo. Manter a "Constituição Cidadã" viva exige que lutemos, a cada dia, pela realização de seus princípios fundamentais.</p>
+    </div>
 
-                isFullscreen = false;
-            }
-        }
+    <div class="chapter" id="bibliografia">
+        <h2>Bibliografia</h2>
+        <h3>Obras Citadas e Consultadas</h3>
+        <h4>Direito Constitucional</h4>
+        <ul>
+            <li>ALEXY, Robert. Teoria dos Direitos Fundamentais. São Paulo: Malheiros, 2008.</li>
+            <li>BARROSO, Luís Roberto. Curso de Direito Constitucional Contemporâneo. São Paulo: Saraiva, 2018.</li>
+            <li>BONAVIDES, Paulo. Curso de Direito Constitucional. São Paulo: Malheiros, 2019.</li>
+            <li>SARLET, Ingo Wolfgang. A Eficácia dos Direitos Fundamentais. Porto Alegre: Livraria do Advogado, 2018.</li>
+        </ul>
+    </div>
 
-        // Função para detectar gestos de swipe
-        function handleTouchStart(e) {
-            startX = e.touches[0].clientX;
-        }
-
-        function handleTouchMove(e) {
-            if (!startX) return;
-            endX = e.touches[0].clientX;
-        }
-
-        function handleTouchEnd() {
-            if (!startX || !endX) return;
-            
-            const diffX = startX - endX;
-            
-            if (Math.abs(diffX) > swipeThreshold) {
-                if (diffX > 0) {
-                    goToNextPage();
-                } else {
-                    goToPrevPage();
-                }
-            }
-            
-            startX = 0;
-            endX = 0;
-        }
-
-        // Event Listeners
-        prevBtn.addEventListener('click', goToPrevPage);
-        nextBtn.addEventListener('click', goToNextPage);
-        fullscreenBtn.addEventListener('click', toggleFullscreen);
-        exitFullscreenBtn.addEventListener('click', toggleFullscreen);
-
-        // Event Listeners para controle de fonte
-        fontIncreaseBtn.addEventListener('click', () => changeFontSize('increase'));
-        fontDecreaseBtn.addEventListener('click', () => changeFontSize('decrease'));
-        fontResetBtn.addEventListener('click', () => changeFontSize('reset'));
-
-        // Event Listeners para gestos de toque
-        flipbook.addEventListener('touchstart', handleTouchStart, false);
-        flipbook.addEventListener('touchmove', handleTouchMove, false);
-        flipbook.addEventListener('touchend', handleTouchEnd, false);
-
-        // Inicialização
-        updatePageIndicators();
-        updateButtonStates();
-
-        // Adiciona suporte para teclado (setas para navegação)
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                goToPrevPage();
-            } else if (e.key === 'ArrowRight') {
-                goToNextPage();
-            } else if (e.key === 'Escape' && isFullscreen) {
-                toggleFullscreen();
-            }
-        });
-    </script>
+    <footer>
+        <p>© 2023 Est. de Direito Alex Peixoto. Todos os direitos reservados.</p>
+        <p>Este trabalho acadêmico foi desenvolvido para fins educacionais e de pesquisa.</p>
+    </footer>
+</div>
 </body>
 </html>
